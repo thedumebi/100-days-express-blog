@@ -1,0 +1,17 @@
+<%- include("partials/header") -%>
+
+<div class="">
+  <h1>Hello there!</h1>
+  <p>Welcome to my 100 days code challenge</p>
+</div>
+<div class="article">
+  <h1><%= latestArticle.title %></h1>
+  <p><%= latestArticle.content.substring(0,50) + " ... " %></p>
+  <button class="btn" type="button" onclick="location.href='/articles/<%= latestArticle._id%>'">read more</button>
+</div>
+
+<div class="">
+  <button class="btn btn-primary" type="button" onclick="location.href='/articles/'">Check out all articles.</button>
+</div>
+
+<%- include("partials/footer") -%>
