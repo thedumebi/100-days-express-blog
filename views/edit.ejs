@@ -1,19 +1,25 @@
 <%- include("partials/header") -%>
 
-<h1>Edit</h1>
-<% article.map(article => { %>
-<form class="create-article" action="/articles/<%= article._id%>/edit" method="post">
-  <div class="form-group">
-    <label>Title</label>
-    <input class="form-control" type="text" name="title" value="<%= article.title %>">
+<section id="title" class="colored-section">
+  <div class="container-fluid">
+    <h1 class="big-heading">Edit</h1>
   </div>
-  <div class="form-group">
-    <label>Content</label>
-    <textarea class="form-control" name="content" rows="8" cols="80"><%=article.content%></textarea>
-  </div>
-  <button class="btn btn-primary" type="submit" name="button">Save</button>
-</form>
-<% }); %>
+</section>
 
+<div class="container-fluid">
+  <% article.map(article => { %>
+  <form class="create-article" action="/articles/<%= article._id%>/edit" method="post">
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" type="text" name="title" value="<%= article.title %>">
+    </div>
+    <div class="form-group">
+      <label>Content</label>
+      <textarea class="form-control" name="content" rows="10"><%=article.content%></textarea>
+    </div>
+    <button class="btn btn-dark" type="submit" name="button">Save</button>
+  </form>
+  <% }); %>
+</div>
 
 <%- include("partials/footer") -%>

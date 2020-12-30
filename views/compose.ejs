@@ -1,16 +1,23 @@
 <%- include("partials/header") -%>
 
-<h1>Compose</h1>
-<form class="create-article" action="/compose" method="post">
-  <div class="form-group">
-    <label>Title</label>
-    <input class="form-control" type="text" name="articleTitle">
+<section id="title" class="colored-section">
+  <div class="container-fluid">
+    <h1 class="big-heading">Compose</h1>
   </div>
-  <div class="form-group">
-    <label>Content</label>
-    <textarea class="form-control" name="articleContent" rows="8" cols="80"></textarea>
-  </div>
-  <button class="btn btn-primary" type="submit" name="button">Add</button>
-</form>
+</section>
+
+<div class="container-fluid">
+  <form class="create-article" action="/compose" method="post">
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" type="text" name="articleTitle">
+    </div>
+    <div class="form-group">
+      <label>Content</label>
+      <textarea class="form-control" name="articleContent" rows="8" cols="80"></textarea>
+    </div>
+    <button class="btn btn-dark" type="submit" name="button">Add</button>
+  </form>
+</div>
 
 <%- include("partials/footer") -%>

@@ -1,18 +1,35 @@
 <%- include("partials/header") -%>
 
+<section id="title" class="colored-section">
+  <div class="container-fluid">
+    <h1 class="big-heading">All Articles</h1>
+  </div>
+</section>
+
 <% if (usersWithArticles.length === 0) { %>
-  <i class="fas fa-key fa-6x"></i>
-  <h1 class="display-3">Add an article to begin!</h1>
+<div class="container-fluid">
+  <h1 class="big-heading">Add an article to begin!</h1>
+</div>
 <% } %>
 
-<% usersWithArticles.forEach(function(user) { %>
+<div class="container-fluid">
+  <% usersWithArticles.forEach(function(user) { %>
+  <div class="row">
     <% user.articles.map((article) => { %>
+    <div class="col-lg-4 col-md-6">
       <div class="article">
-        <h1><%= article.title %></h1>
-        <p><%= article.content.substring(0,50) + " ... " %></p>
-        <button class="btn" type="button" onclick="location.href='/articles/<%= article._id%>'">read more</button>
+        <div class="heading">
+          <h1><%= article.title %></h1>
+        </div>
+        <div class="content">
+          <p><%= article.content.substring(0,50) + " ... " %></p>
+        </div>
+        <button class="btn btn-dark" type="button" onclick="location.href='/articles/<%= article._id%>'">read more</button>
       </div>
+    </div>
     <% }); %>
-<% }); %>
+  </div>
+  <% }); %>
+</div>
 
 <%- include("partials/footer") -%>

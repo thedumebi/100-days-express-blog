@@ -1,17 +1,35 @@
 <%- include("partials/header") -%>
 
-<div class="">
-  <h1>Hello there!</h1>
-  <p>Welcome to my 100 days code challenge</p>
-</div>
-<div class="article">
-  <h1><%= latestArticle.title %></h1>
-  <p><%= latestArticle.content.substring(0,50) + " ... " %></p>
-  <button class="btn" type="button" onclick="location.href='/articles/<%= latestArticle._id%>'">read more</button>
+<section id="title" class="colored-section">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="big-heading">Welcome to Dumebi's 100 days code challenge site!</h1>
+        <p>Below is the latest article available.</p>
+      </div>
+      <div class="col-lg-6">
+        <img class="title-image" src="/images/llama.svg">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="container-fluid">
+  <div class="article" style="width: 100%">
+    <div class="heading">
+      <h1><%= latestArticle.title %></h1>
+    </div>
+    <div class="content">
+      <p><%= latestArticle.content.substring(0,50) + " ... " %></p>
+    </div>
+    <button class="btn btn-dark" type="button" onclick="location.href='/articles/<%= latestArticle._id%>'">read more</button>
+  </div>
 </div>
 
-<div class="">
-  <button class="btn btn-primary" type="button" onclick="location.href='/articles/'">Check out all articles.</button>
+<div class="container-fluid center">
+  <button class="btn btn-dark" type="button" onclick="location.href='/articles/'">Check out all articles.</button>
 </div>
 
 <%- include("partials/footer") -%>

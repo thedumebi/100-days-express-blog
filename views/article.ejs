@@ -1,24 +1,26 @@
 <%- include("partials/header") -%>
 
-<% article.map(article => { %>
-  <div class="article" style="width: 70%">
-    <h1><%= article.title %></h1>
-    <p><%= article.content %></p>
-    <% if (user) { %>
-      <form action="/delete" method="post">
-        <button class="btn" type="submit" name="delete" value="<%=article._id%>" >Delete</button>
-        <button class="btn" type="button" onclick="location.href='/articles/<%= article._id%>/edit'">edit</button>
-      </form>
-    <% } %>
-  </div>
-<% }); %>
+<div class="container-fluid">
+  <% article.map(article => { %>
+    <div class="article" style="width: 100%">
+      <div class="heading" style="height: 100%">
+        <h1><%= article.title %></h1>
+      </div>
+      <div class="content" style="height: 100%">
+        <p><%= article.content %></p>
+      </div>
+      <% if (user) { %>
+        <form action="/delete" method="post">
+          <button class="btn btn-dark" type="submit" name="delete" value="<%=article._id%>" >Delete</button>
+          <button class="btn btn-dark" type="button" onclick="location.href='/articles/<%= article._id%>/edit'">edit</button>
+        </form>
+      <% } %>
+    </div>
+  <% }); %>
+</div>
 
-<div class="">
-  <button class="btn btn-primary" type="button" onclick="location.href='/articles/'">Check out all articles.</button>
+<div class="container-fluid center">
+  <button class="btn btn-dark" type="button" onclick="location.href='/articles/'">Check out all articles.</button>
 </div>
 
 <%- include("partials/footer") -%>
-
-<<script type="text/javascript">
-
-</script>
