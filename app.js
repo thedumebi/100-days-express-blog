@@ -65,6 +65,10 @@ app.get("/", function(req, res) {
   });
 });
 
+app.get("/about", function(req, res) {
+  res.render("about");
+});
+
 app.get("/articles", function(req, res) {
   User.find({"articles": {$elemMatch: {$exists: true}}}, function(err, foundUsers) {
     if (err) {
