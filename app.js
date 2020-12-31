@@ -20,8 +20,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://TheDumebi:" + process.env.DB_PASSWORD +"@cluster0.zrvvc.mongodb.net/100daysDB", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-// mongoose.connect("mongodb://localhost:27017/100daysDB", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+// mongoose.connect("mongodb+srv://TheDumebi:" + process.env.DB_PASSWORD +"@cluster0.zrvvc.mongodb.net/100daysDB", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+mongoose.connect("mongodb://localhost:27017/100daysDB", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
 const articleSchema = mongoose.Schema ({
   title: String,
