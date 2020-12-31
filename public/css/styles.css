@@ -2,6 +2,7 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #4f5c4f;
   background: #eee;
+  line-height: 2;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 
 }

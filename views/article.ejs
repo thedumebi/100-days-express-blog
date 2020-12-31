@@ -7,7 +7,7 @@
         <h1><%= article.title %></h1>
       </div>
       <div class="content" style="height: 100%">
-        <p><%= article.content %></p>
+        <p><%- article.content %></p>
       </div>
       <% if (user) { %>
         <form action="/delete" method="post">

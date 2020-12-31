@@ -22,7 +22,7 @@
           <h1><%= article.title %></h1>
         </div>
         <div class="content">
-          <p><%= article.content.substring(0,50) + " ... " %></p>
+          <p><%- article.content.substring(0,50) + " ... " %></p>
         </div>
         <button class="btn btn-dark" type="button" onclick="location.href='/articles/<%= article._id%>'">read more</button>
       </div>
