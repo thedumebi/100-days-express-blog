@@ -28,7 +28,8 @@ const articleSchema = mongoose.Schema ({
   content: {
     type: String,
     required: [true, "Content cannot be empty"]
-  }
+  },
+  comments: Array
 });
 
 const Article = mongoose.model("Article", articleSchema);
@@ -95,7 +96,7 @@ app.get("/articles/:articleId", function(req, res) {
       const article = foundUser.articles.filter((article) => {
         return (article._id == articleId);
       });
-      res.render("article", {article: article, user: req.user});
+      res.render("article", {article: article[0], user: req.user});
       // console.log(foundUser);
     }
   });
@@ -133,8 +134,22 @@ app.route("/articles/:articleId/edit")
   } else {
     res.redirect("/articles/" + articleId );
   }
+});
 
-
+app.post("/articles/:articleId/comment", function(req, res) {
+  const articleId = req.params.articleId;
+  const comment = req.body.comment;
+  User.findOne({"articles": {$elemMatch: {"_id": articleId}}}, function(err, foundUser) {
+    if (err) {
+      console.log(err);
+    } else {
+      const article = foundUser.articles.filter((article) => {
+        return (article._id == articleId);
+      });
+      article[0].comments.push(comment);
+      foundUser.save(() => res.redirect("/articles/" + articleId));
+    }
+  });
 });
 
 app.post("/delete", function(req, res) {
@@ -214,6 +229,7 @@ app.route("/login")
     } else {
       passport.authenticate("local", {failureRedirect: "/login"})(req, res, function() {
         res.redirect("/compose");
+        console.log("logged in");
       });
     }
   });

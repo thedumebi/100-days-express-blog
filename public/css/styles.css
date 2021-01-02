@@ -179,6 +179,15 @@ form.create-article button {
   outline: none;
 }
 
+.comment {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1%;
+  border-radius: 10px;
+}
+.comment p {
+  margin: 0;
+}
+
 @media (max-width:1028px) {
   .big-heading {
     font-family: "Montserrat";

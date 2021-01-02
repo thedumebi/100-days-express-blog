@@ -1,26 +1,41 @@
 <%- include("partials/header") -%>
 
 <div class="container-fluid">
-  <% article.map(article => { %>
-    <div class="article" style="width: 100%">
-      <div class="heading" style="height: 100%">
-        <h1><%= article.title %></h1>
-      </div>
-      <div class="content" style="height: 100%">
-        <p><%- article.content %></p>
-      </div>
-      <% if (user) { %>
-        <form action="/delete" method="post">
-          <button class="btn btn-dark" type="submit" name="delete" value="<%=article._id%>" >Delete</button>
-          <button class="btn btn-dark" type="button" onclick="location.href='/articles/<%= article._id%>/edit'">edit</button>
-        </form>
-      <% } %>
+  <div class="article" style="width: 100%">
+    <div class="heading" style="height: 100%">
+      <h1><%= article.title %></h1>
     </div>
-  <% }); %>
+    <div class="content" style="height: 100%">
+      <p><%- article.content %></p>
+    </div>
+    <% if (user) { %>
+    <form action="/delete" method="post">
+      <button class="btn btn-dark" type="submit" name="delete" value="<%=article._id%>">Delete</button>
+      <button class="btn btn-dark" type="button" onclick="location.href='/articles/<%= article._id%>/edit'">edit</button>
+    </form>
+    <% } %>
+  </div>
 </div>
 
 <div class="container-fluid center">
   <button class="btn btn-dark" type="button" onclick="location.href='/articles/'">Check out all articles.</button>
+</div>
+
+<div class="container-fluid">
+  <form class="create-article" action="/articles/<%= article._id%>/comment" method="post">
+    <div class="form-group">
+      <label for="">Leave a comment</label>
+      <textarea class="form-control" name="comment"></textarea>
+    </div>
+    <button class="btn btn-dark" type="submit" name="submit">Post</button>
+  </form>
+  <% if (article.comments) { %>
+  <% article.comments.map((comment) => { %>
+      <div class="comment">
+        <p><%= comment %></p>
+      </div>
+    <% }); %>
+  <% } %>
 </div>
 
 <%- include("partials/footer") -%>
