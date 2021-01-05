@@ -205,22 +205,22 @@ app.route("/compose")
   }
 });
 
-app.route("/register")
-.get(function(req, res) {
-  res.render("register");
-})
-.post(function(req, res) {
-  User.register({username: req.body.username}, req.body.password, function(err, user) {
-    if (err) {
-      console.log(err);
-      res.redirect("/register");
-    } else {
-      passport.authenticate("local", {failureRedirect: "/register"})(req, res, function() {
-        res.redirect("/articles");
-      });
-    }
-  });
-});
+// app.route("/register")
+// .get(function(req, res) {
+//   res.render("register");
+// })
+// .post(function(req, res) {
+//   User.register({username: req.body.username}, req.body.password, function(err, user) {
+//     if (err) {
+//       console.log(err);
+//       res.redirect("/register");
+//     } else {
+//       passport.authenticate("local", {failureRedirect: "/register"})(req, res, function() {
+//         res.redirect("/articles");
+//       });
+//     }
+//   });
+// });
 
 app.route("/login")
 .get(function(req, res) {
